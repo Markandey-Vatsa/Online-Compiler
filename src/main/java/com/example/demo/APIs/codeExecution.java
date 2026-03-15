@@ -19,8 +19,7 @@ public class codeExecution {
     @PostMapping("/execute")
     ExecutionResult codeExecute(@RequestBody CodeObject codeObject){
         String input = codeObject.getInputs();
-        ExecutionResult res = execute.execute(codeObject.getCode(),input);
-        return res;
+        return execute.execute(codeObject.getCode(),input);
     }
 
 
