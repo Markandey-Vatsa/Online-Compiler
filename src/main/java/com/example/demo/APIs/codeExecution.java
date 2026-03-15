@@ -1,26 +1,31 @@
 package com.example.demo.APIs;
 
-
 import com.example.demo.POJOs.CodeObject;
 import com.example.demo.POJOs.ExecutionResult;
 import com.example.demo.Services.CodeExecute;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class codeExecution {
 
-    codeExecution(CodeExecute execute){
+    codeExecution(CodeExecute execute) {
         this.execute = execute;
     }
 
     CodeExecute execute;
 
     @PostMapping("/execute")
-    ExecutionResult codeExecute(@RequestBody CodeObject codeObject){
+    ExecutionResult codeExecute(@RequestBody CodeObject codeObject) {
         String input = codeObject.getInputs();
-        return execute.execute(codeObject.getCode(),input);
+        return execute.execute(codeObject.getCode(), input);
     }
 
+    @GetMapping("/health")
+    Map<String, String> health() {
+        return Map.of("status", "up");
+    }
 
 }

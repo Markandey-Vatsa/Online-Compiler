@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Code Editor IDE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ide-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span class="product">CodeEditor IDE</span>
+        <span class="context">Project: Local Workspace</span>
+      </div>
+      <div class="topbar-right">
+        <button id="themeToggle" class="btn subtle" type="button" aria-pressed="false">Light Mode</button>
+        <span id="statusBadge" class="status idle">Idle</span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-area">
+        <div class="editor-tabs">
+          <span class="tab active">Main.java</span>
+        </div>
+
+        <div class="editor-toolbar">
+          <button id="sampleBtn" class="btn subtle" type="button">Load Sample</button>
+          <button id="runBtn" class="btn run" type="button">Run Code</button>
+          <label for="fontSizeSelect" class="label-inline">Font</label>
+          <select id="fontSizeSelect" class="font-size-select" aria-label="Code font size">
+            <option value="12">12px</option>
+            <option value="13" selected>13px</option>
+            <option value="14">14px</option>
+            <option value="16">16px</option>
+            <option value="18">18px</option>
+          </select>
+        </div>
+
+        <label for="codeInput" class="label">Main.java</label>
+  <div id="codeEditor" class="code-editor" aria-label="Java code editor"></div>
+
+        <label for="stdinInput" class="label">Program Input</label>
+        <textarea id="stdinInput" class="stdin" spellcheck="false" aria-label="Program input"></textarea>
+      </section>
+
+      <aside class="tool-window">
+        <div class="tool-head">
+          <h2>Run</h2>
+          <div class="actions">
+            <button id="copyBtn" class="btn subtle" type="button">Copy</button>
+            <button id="downloadBtn" class="btn subtle" type="button">Save</button>
+          </div>
+        </div>
+
+        <div class="result-tabs" role="tablist" aria-label="Result tabs">
+          <button id="tabOutput" class="result-tab active" data-tab="output" role="tab" aria-selected="true" type="button">Output</button>
+          <button id="tabError" class="result-tab" data-tab="error" role="tab" aria-selected="false" type="button">Error</button>
+        </div>
+
+        <pre id="resultOutput" class="console">Run your code to see output.</pre>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/ace.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/mode-java.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/theme-intellij.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/theme-tomorrow_night.js"></script>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
